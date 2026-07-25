@@ -1,5 +1,6 @@
 import path from "node:path"
 import HtmlWebpackPlugin from "html-webpack-plugin"
+import { watchFile } from "node:fs"
 
 export default {
   mode: "development",
@@ -14,10 +15,16 @@ export default {
       template: "./src/index.html",
     }),
   ],
-  module: [
-    {
-      test: /\.css$/i,
-      use: ["style-loader", "css-loader"],
-    },
-  ],
+  devtool: "eval-source-map",
+  devServer: {
+    watchFiles: ["./src/index.html"]
+  },
+  module: { 
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+     },
+    ]
+  },
 }
