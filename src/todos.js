@@ -1,4 +1,5 @@
-const projects = {}
+const projects = {};
+const todos = {};
 
 const createTodo = (
     function (
@@ -9,7 +10,7 @@ const createTodo = (
         priority = "Priority"
     ) {
 
-        const id = crypto.randomUUID();
+        const id = "1";
         
         return {
             id, 
@@ -22,27 +23,37 @@ const createTodo = (
     }
 )
 
-// const createProject = (
-//     function (name) {
-//         const projectId = crypto.randomUUID();
+const createProject = (
+    function (name) {
+        const projectId = "1";
 
-//         if (!projects[projectId]) {
-//             projects[projectId] = {};
-//         }
-//     }
-// )
+        // add to projects object
+        projects[projectId] = name;
 
-const addTodo = (
-    function () {
-        const todo = createTodo();
-        if (!projects[todo.projectId]) {
-            projects[todo.projectId] = {};
-        }
-        projects[todo.projectId][todo.id] = todo
+        // add to todos
+        todos[projectId] = {};
     }
 )
 
-addTodo();
-addTodo();
+const addTodo = (
+    function (projectId, title, description, dueDate, priority) {
+        const todo = createTodo(projectId, title, description, dueDate, priority);
+
+        todos[projectId][todo.id] = todo;
+    }
+)
+
+
+const removeTodo = (
+    function (projectId,todoId) {
+        delete todos[projectId][todoId]
+    }
+)
+
+createProject("First Project");
+
+addTodo("1", "First todo", "Nothing special", "Today", "medium")
+
 
 console.log(projects);
+console.log(todos);
