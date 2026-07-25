@@ -50,10 +50,3 @@ export const removeTodo = (
     }
 )
 
-createProject("First Project");
-
-addTodo("1", "First todo", "Nothing special", "Today", "medium")
-
-
-console.log(projects);
-console.log(todos);
