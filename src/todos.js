@@ -1,7 +1,7 @@
-const projects = {};
-const todos = {};
+export const projects = {};
+export const todos = {};
 
-const createTodo = (
+export const createTodo = (
     function (
         projectId = "projectId",
         title="Title",
@@ -23,7 +23,7 @@ const createTodo = (
     }
 )
 
-const createProject = (
+export const createProject = (
     function (name) {
         const projectId = "1";
 
@@ -35,7 +35,7 @@ const createProject = (
     }
 )
 
-const addTodo = (
+export const addTodo = (
     function (projectId, title, description, dueDate, priority) {
         const todo = createTodo(projectId, title, description, dueDate, priority);
 
@@ -44,7 +44,7 @@ const addTodo = (
 )
 
 
-const removeTodo = (
+export const removeTodo = (
     function (projectId,todoId) {
         delete todos[projectId][todoId]
     }
