@@ -53,4 +53,15 @@ export const removeTodo = (
     }
 )
 
-console.log(projects);
+export const removeProject = (
+    function (projectId) {
+        delete todos[projectId];
+        delete projects[projectId]
+    }
+)
+
+const e = createProject("TEst");
+removeProject(e);
+
+
+console.log(projects)
