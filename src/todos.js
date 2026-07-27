@@ -25,13 +25,16 @@ export const createTodo = (
 
 export const createProject = (
     function (name) {
-        const projectId = "1";
+        
+        const projectId = crypto.randomUUID();
 
         // add to projects object
         projects[projectId] = name;
 
         // add to todos
         todos[projectId] = {};
+
+        return projectId;
     }
 )
 
@@ -50,3 +53,4 @@ export const removeTodo = (
     }
 )
 
+console.log(projects);

@@ -1,2 +1,4 @@
-import { projects, todos, createProject, createTodo, addTodo, removeTodo } from './todos.js'
+import "./styles.css";
+import  "./todos.js";
+import "./DOM.js"
 
