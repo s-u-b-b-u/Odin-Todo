@@ -2,18 +2,32 @@ import { createProject, projects, createTodo, addTodo, todos } from "./todos.js"
 import { renderProjects } from "./render-logic.js";
 
 export const displayProjects = document.querySelector('.display-projects');
-const createProjectButton = document.querySelector('.js-create-project');
-const projectHeading = document.querySelector('.js-project-name')
+
+const openProjectDialog = document.querySelector('.js-open-project-dialog');
+const projectHeading = document.querySelector('.js-project-name');
+
+const projectForm = document.querySelector('.project-form')
+const projectDialog = document.querySelector('.project-dialog');
+const projectInput = document.querySelector('#project-input');
+const closeProjectDialog = document.querySelector('.close-project-dialog');''
 
 document.addEventListener("DOMContentLoaded", () => {
     renderProjects();
 })
 
-createProjectButton.addEventListener('click', () => {
-    // this project name should be taken form the user later.
-    const projectId = createProject("First Project");
-    projectHeading.textContent = projects[projectId];
+projectForm.addEventListener('submit', (event) =>{
+    event.preventDefault();
+})
+
+closeProjectDialog.addEventListener('click', ()=> {
+    projectDialog.close();
+    const projectName = projectInput.value;
+    createProject(projectName);
     renderProjects();
+})
+
+openProjectDialog.addEventListener('click', () => {
+    projectDialog.showModal();
 })
 
 

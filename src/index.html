@@ -10,7 +10,13 @@
         <div class="left-side">
             <div class="create-projects background-bg ">
                 Projects 
-                <button class="create-project js-create-project">+</button>
+                <button class="create-project js-open-project-dialog">+</button>
+                <dialog class="project-dialog">
+                    <form action="#" class="project-form">
+                        <input type="text" placeholder="Enter project Name" id="project-input">
+                        <button type="button" class="close-project-dialog">ok</button>
+                    </form>
+                </dialog>
             </div>
             <div class="display-projects">
             </div>
