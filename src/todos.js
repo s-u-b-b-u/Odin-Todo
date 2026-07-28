@@ -60,8 +60,6 @@ export const removeProject = (
     }
 )
 
-const e = createProject("TEst");
-removeProject(e);
 
 
-console.log(projects)
+console.log(projects);
