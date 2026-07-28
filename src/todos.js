@@ -10,7 +10,7 @@ export const createTodo = (
         priority = "Priority"
     ) {
 
-        const id = "1";
+        const id = crypto.randomUUID();
         
         return {
             id, 
