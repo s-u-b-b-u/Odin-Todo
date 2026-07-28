@@ -10,7 +10,7 @@ export function renderProjects() {
 
     for (const [key, value] of Object.entries(projects)) {
         displayProjects.innerHTML += `
-        <div class="project"> ${value} <button class="add-todo js-add-todo" data-project-id ="${key}"">+</button></div>
+        <div class="project background-bg"> ${value} <button class="add-todo js-add-todo" data-project-id ="${key}"">+</button></div>
     `
     }
 }
