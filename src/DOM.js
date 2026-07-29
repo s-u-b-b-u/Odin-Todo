@@ -1,5 +1,5 @@
 import { createProject, projects, createTodo, addTodo, todos } from "./todos.js"
-import { renderProjects } from "./render-logic.js";
+import { renderProjects, renderTodos } from "./render-logic.js";
 
 export const displayProjects = document.querySelector('.display-projects');
 
@@ -9,7 +9,16 @@ const projectHeading = document.querySelector('.js-project-name');
 const projectForm = document.querySelector('.project-form')
 const projectDialog = document.querySelector('.project-dialog');
 const projectInput = document.querySelector('#project-input');
-const closeProjectDialog = document.querySelector('.close-project-dialog');''
+const closeProjectDialog = document.querySelector('.close-project-dialog');
+
+const todoForm = document.querySelector('.todo-form');
+const todoDialog = document.querySelector('.todo-dialog');
+const todoTitleInput = document.querySelector('#todo-title');
+const closeTodoDialog = document.querySelector('.close-todo-dialog');
+
+export const todosDisplay = document.querySelector('.todo-list')
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     renderProjects();
@@ -38,9 +47,43 @@ displayProjects.addEventListener('click', (event)=>{
     if (addTodoButton) {
 
         const projectId = addTodoButton.dataset.projectId;
+        closeTodoDialog.setAttribute('data-project-id', projectId);
+        todoDialog.showModal();
+       
+    }
+});
 
-        addTodo(projectId, "Test Todo", "How is your day?", "no data", "low");
-        console.log("added")
+// using event delegation to render the todos in that project when clicked on project div
 
+displayProjects.addEventListener('click', (event) => {
+    const project = event.target.closest('.js-project');
+
+
+    if (project) {
+
+        const projectId = project.dataset.projectId;
+        renderTodos(projectId);
     }
 })
+
+closeTodoDialog.addEventListener('click', ()=>{    
+    const todoTitle = todoTitleInput.value;
+    const projectId = closeTodoDialog.dataset.projectId;
+    todoTitleInput.value = "";
+    todoDialog.close();
+
+    
+    addTodo(projectId,
+        todoTitle,
+        "This is a great day",
+        "todya",
+        "low"
+    )
+    console.log(todos[projectId]);
+
+    renderTodos(projectId);
+})
+
+
+
+

@@ -6,28 +6,33 @@
     <title>Toddo List</title>
 </head>
 <body>
+    <dialog class="project-dialog">
+        <form action="#" class="project-form">
+            <input type="text" placeholder="Enter project Name" id="project-input">
+            <button type="button" class="close-project-dialog">ok</button>
+        </form>
+    </dialog>
+    
+    <dialog class="todo-dialog">
+        <form action="#" class="todo-form">
+            <input type="text" placeholder="Eg: Bring Chocolates" id="todo-title">
+            <button type="button" class="close-todo-dialog">ok</button>
+        </form>
+    </dialog>
     <div class="container">
         <div class="left-side">
             <div class="create-projects background-bg ">
                 Projects 
                 <button class="create-project js-open-project-dialog">+</button>
-                <dialog class="project-dialog">
-                    <form action="#" class="project-form">
-                        <input type="text" placeholder="Enter project Name" id="project-input">
-                        <button type="button" class="close-project-dialog">ok</button>
-                    </form>
-                </dialog>
             </div>
             <div class="display-projects">
             </div>
         </div>
         <div class="right-side">
             <div class="todo-content">
-                <h1 class="project-name js-project-name">First Project</h1>
+                <h1 class="project-name js-project-name"></h1>
                 <div class="todo-list">
-                    <div class="todo">Name</div>
-                    <div class="todo">Name is subba reddys</div>
-                    <div class="todo">Lorem ipsum dolor sit.</div>
+                    
                 </div>
             </div>
         </div>

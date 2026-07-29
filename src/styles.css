@@ -87,7 +87,7 @@ body {
 
 .project-name {
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--bg);
+    /* border-bottom: 1px solid var(--bg); */
 }
 
 .todo-list {

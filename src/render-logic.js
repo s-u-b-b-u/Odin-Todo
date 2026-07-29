@@ -1,5 +1,5 @@
-import { projects } from "./todos";
-import { displayProjects } from "./DOM";
+import { projects, todos } from "./todos";
+import { displayProjects, todosDisplay } from "./DOM";
 
 export function renderProjects() {
 
@@ -10,7 +10,23 @@ export function renderProjects() {
 
     for (const [key, value] of Object.entries(projects)) {
         displayProjects.innerHTML += `
-        <div class="project background-bg"> ${value} <button class="add-todo js-add-todo" data-project-id ="${key}"">+</button></div>
+        <div class="project js-project background-bg" data-project-id="${key}"> 
+            ${value} 
+            <button class="add-todo js-add-todo" data-project-id ="${key}"">+</button>
+        </div>
     `
     }
+}
+
+export function renderTodos(projectId) {
+
+    todosDisplay.innerHTML = ``;
+
+    for (const [key, value] of Object.entries(todos[projectId])) {
+        todosDisplay.innerHTML += `
+            <div class="todo">${todos[projectId][key].title}</div>
+        `
+    }
+
+
 }
