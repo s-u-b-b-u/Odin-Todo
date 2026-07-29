@@ -31,6 +31,9 @@ projectForm.addEventListener('submit', (event) =>{
 closeProjectDialog.addEventListener('click', ()=> {
     projectDialog.close();
     const projectName = projectInput.value;
+
+    if (projectName === "") return; 
+
     createProject(projectName);
     renderProjects();
 })
@@ -73,6 +76,8 @@ closeTodoDialog.addEventListener('click', ()=>{
     todoDialog.close();
 
     
+    if (todoTitle === "") return
+
     addTodo(projectId,
         todoTitle,
         "This is a great day",
