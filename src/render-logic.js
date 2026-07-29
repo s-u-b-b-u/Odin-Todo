@@ -1,7 +1,9 @@
-import { projects, todos } from "./todos";
+import { getProjectsFromStorage, getTodosFromStorage } from "./local-storage";
 import { displayProjects, todosDisplay } from "./DOM";
 
 export function renderProjects() {
+
+    const projects = getProjectsFromStorage();
 
     if (Object.keys(projects).length === 0) {
         return;
@@ -19,6 +21,8 @@ export function renderProjects() {
 }
 
 export function renderTodos(projectId) {
+
+    const todos = getTodosFromStorage();
 
     todosDisplay.innerHTML = ``;
 
