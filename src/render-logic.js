@@ -3,18 +3,21 @@ import { displayProjects, todosDisplay } from "./DOM";
 
 export function renderProjects() {
 
-    const projects = getProjectsFromStorage();
+    const projects = getProjectsFromStorage() || {};
 
+    console.log(Object.keys(projects).length);
+
+    displayProjects.innerHTML = ``;
     if (Object.keys(projects).length === 0) {
         return;
     }
-    displayProjects.innerHTML = ``;
 
     for (const [key, value] of Object.entries(projects)) {
         displayProjects.innerHTML += `
         <div class="project js-project background-bg" data-project-id="${key}"> 
             ${value} 
             <button class="add-todo js-add-todo" data-project-id ="${key}"">+</button>
+            <button class="remove-project js-remove-project" data-project-id="${key}">-</button>
         </div>
     `
     }
@@ -22,7 +25,9 @@ export function renderProjects() {
 
 export function renderTodos(projectId) {
 
-    const todos = getTodosFromStorage();
+    const todos = getTodosFromStorage() || {};
+
+    if (!Object.hasOwn(todos, projectId)) return;
 
     todosDisplay.innerHTML = ``;
 

@@ -17,6 +17,6 @@ export function getTodosFromStorage () {
     return JSON.parse(localStorage.getItem('todos'));
 }
 
-export function clearStorage() {
-    localStorage.clear();
+export function removeItemFromStorage(item) {
+    localStorage.removeItem(item)
 }

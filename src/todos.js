@@ -1,6 +1,6 @@
 import { getProjectsFromStorage, getTodosFromStorage } from "./local-storage";
 import { saveProjectsToStorage, saveTodosToStorage } from "./local-storage";
-import { clearStorage } from "./local-storage";
+import { removeItemFromStorage } from "./local-storage";
 
 export const projects = getProjectsFromStorage() || {};
 export const todos = getTodosFromStorage()  || {};
@@ -38,6 +38,10 @@ export const createProject = (
         
         // add to todos
         todos[projectId] = {};
+
+        removeItemFromStorage('projects');
+        removeItemFromStorage('todos');
+
         saveProjectsToStorage();
         saveTodosToStorage();
 
@@ -50,7 +54,7 @@ export const addTodo = (
         const todo = createTodo(projectId, title, description, dueDate, priority);
 
         todos[projectId][todo.id] = todo;
-        // clearStorage();
+        removeItemFromStorage('todos')
         saveTodosToStorage();
     }
 )
@@ -59,6 +63,7 @@ export const addTodo = (
 export const removeTodo = (
     function (projectId,todoId) {
         delete todos[projectId][todoId]
+        removeItemFromStorage('todos')
         saveTodosToStorage();
     }
 )
@@ -68,6 +73,9 @@ export const removeProject = (
         delete todos[projectId];
         delete projects[projectId]
         
+        removeItemFromStorage('projects');
+        removeItemFromStorage('todos')
+
         saveProjectsToStorage()
         saveTodosToStorage();
     }
