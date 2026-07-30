@@ -1,10 +1,10 @@
-import { createProject, projects, createTodo, addTodo, todos, removeProject } from "./todos.js"
+import { createProject, projects, createTodo, addTodo, todos, removeProject, removeTodo } from "./todos.js"
 import { renderProjects, renderTodos } from "./render-logic.js";
 
 export const displayProjects = document.querySelector('.display-projects');
 
 const openProjectDialog = document.querySelector('.js-open-project-dialog');
-const projectHeading = document.querySelector('.js-project-name');
+export const projectHeading = document.querySelector('.js-project-name');
 
 const projectForm = document.querySelector('.project-form')
 const projectDialog = document.querySelector('.project-dialog');
@@ -105,6 +105,21 @@ closeTodoDialog.addEventListener('click', ()=>{
     renderTodos(projectId);
 })
 
+
+// use event delegation todosDisplay to remove the todos
+
+todosDisplay.addEventListener('click', (event) =>{
+    const deleteTodoButton = event.target.closest('.js-delete-todo');
+
+    if (deleteTodoButton) {
+        
+        const projectId = deleteTodoButton.dataset.projectId;
+        const todoId = deleteTodoButton.dataset.todoId;
+
+        removeTodo(projectId, todoId);
+        renderTodos(projectId);
+    }
+})
 
 
 

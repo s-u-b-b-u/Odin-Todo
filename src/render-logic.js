@@ -1,5 +1,5 @@
 import { getProjectsFromStorage, getTodosFromStorage } from "./local-storage";
-import { displayProjects, todosDisplay } from "./DOM";
+import { displayProjects, todosDisplay, projectHeading } from "./DOM";
 
 export function renderProjects() {
 
@@ -26,14 +26,20 @@ export function renderProjects() {
 export function renderTodos(projectId) {
 
     const todos = getTodosFromStorage() || {};
+    const projects = getProjectsFromStorage() || {};
 
     if (!Object.hasOwn(todos, projectId)) return;
 
     todosDisplay.innerHTML = ``;
+    projectHeading.textContent = ``;
+    projectHeading.textContent = `${projects[projectId]}`;
 
     for (const [key, value] of Object.entries(todos[projectId])) {
         todosDisplay.innerHTML += `
-            <div class="todo">${todos[projectId][key].title}</div>
+            <div class="todo">
+            ${todos[projectId][key].title} 
+            <button class="delete-todo js-delete-todo" data-project-id=${projectId} data-todo-id =${key}>-</button>
+            </div>
         `
     }
 
