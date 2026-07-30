@@ -38,7 +38,7 @@ export function renderTodos(projectId) {
         todosDisplay.innerHTML += `
             <div class="todo">
             ${todos[projectId][key].title} 
-            <button class="delete-todo js-delete-todo" data-project-id=${projectId} data-todo-id =${key}>-</button>
+            <button class="delete-todo js-delete-todo" data-project-id=${projectId} data-todo-id=${key}>-</button>
             </div>
         `
     }
