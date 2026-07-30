@@ -13,8 +13,13 @@ const closeProjectDialog = document.querySelector('.close-project-dialog');
 
 const todoForm = document.querySelector('.todo-form');
 const todoDialog = document.querySelector('.todo-dialog');
-const todoTitleInput = document.querySelector('#todo-title');
 const closeTodoDialog = document.querySelector('.close-todo-dialog');
+
+// todo form inputs
+const todoTitleInput = document.querySelector('#todo-title');
+const todoDescriptionInput = document.querySelector('#todo-description');
+const todoDueDateInput = document.querySelector('#todo-due-date');
+const todoPriorityInput = document.querySelector('#todo-priority');
 
 const deleteProjectButton = document.querySelector('.js-remove-project');
 
@@ -86,8 +91,14 @@ displayProjects.addEventListener('click', (event) => {
 })
 
 closeTodoDialog.addEventListener('click', ()=>{    
-    const todoTitle = todoTitleInput.value;
     const projectId = closeTodoDialog.dataset.projectId;
+
+    const todoTitle = todoTitleInput.value;
+    const todoDescription = todoDescriptionInput.value;
+    const todoDueDate = todoDueDateInput.value;
+    const todoPriority = todoPriorityInput.value
+
+
     todoTitleInput.value = "";
     todoDialog.close();
 
@@ -96,9 +107,9 @@ closeTodoDialog.addEventListener('click', ()=>{
 
     addTodo(projectId,
         todoTitle,
-        "This is a great day",
-        "todya",
-        "low"
+        todoDescription,
+        todoDueDate,
+        todoPriority
     )
     console.log(todos[projectId]);
 

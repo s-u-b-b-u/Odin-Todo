@@ -105,3 +105,22 @@ body {
     border-radius: 15px;
 
 }
+
+
+/*Dioalog sytles*/
+
+.todo-dialog {
+    width: max(400px, 50%);
+    height: max(300px, 40%);
+
+    border: none;
+    border-radius: 14px;
+    background-color: var(--bg);
+    color: var(--primaryColor); 
+}
+
+
+.todo-form {
+    color: inherit;
+    font-size: inherit;
+}
