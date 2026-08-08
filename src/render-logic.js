@@ -37,11 +37,38 @@ export function renderTodos(projectId) {
     for (const [key, value] of Object.entries(todos[projectId])) {
         todosDisplay.innerHTML += `
             <div class="todo">
-            ${todos[projectId][key].title} 
-            <button class="delete-todo js-delete-todo" data-project-id=${projectId} data-todo-id=${key}>-</button>
+                ${todos[projectId][key].title} 
+                <button class="delete-todo js-delete-todo" data-project-id=${projectId} data-todo-id=${key}>-</button>
+                <button class="expand-todo-button js-expand-todo-button" data-todo-id=${key}> > </button>
+                <button class="edit-todo-button js-edit-todo-button" data-todo-id=${key} data-project-id=${projectId}> edit</button>
+                    <div class="expand-field-${key} expand-field">
+                        <div><p>${todos[projectId][key].description}</p></div>
+                    </div>
+                    <div class="expand-field-${key} expand-field">
+                        <div><p>${todos[projectId][key].dueDate}</p></div>
+                    </div>
+                    <div class="expand-field-${key} expand-field">
+                        <div><p>${todos[projectId][key].priority}</p></div>
+                    </div>
             </div>
         `
     }
 
+
+}
+
+
+export function toggleExpandButton(expandField){
+
+
+    expandField.forEach((field) => {
+
+        if(field.classList.contains('expand-field-click')){
+            field.classList.remove('expand-field-click');
+        }else {
+            field.classList.add('expand-field-click')
+        }
+
+    })
 
 }

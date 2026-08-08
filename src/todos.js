@@ -59,6 +59,17 @@ export const addTodo = (
     }
 )
 
+export const editTodo = (
+    function(todoId, projectId, title, description, dueDate, priority) {
+        todos[projectId][todoId].title = title;
+        todos[projectId][todoId].description = description;
+        todos[projectId][todoId].dueDate = dueDate;
+        todos[projectId][todoId].priority = priority;
+
+        // removeItemFromStorage('todos');
+        saveTodosToStorage();
+    }
+)
 
 export const removeTodo = (
     function (projectId,todoId) {
@@ -81,4 +92,3 @@ export const removeProject = (
     }
 )
 
-console.log(projects);

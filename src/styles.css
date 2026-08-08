@@ -103,9 +103,27 @@ body {
     padding: 0.75rem 2rem;
     background-color: var(--bg);
     border-radius: 15px;
-
+    width: max(400px, 40%)
 }
 
+
+.expand-field{
+
+    display: grid;
+    grid-template-rows: 0fr;
+    
+
+    transition: grid-template-rows 600ms;
+}
+
+.expand-field > div {
+    overflow: hidden;
+}
+
+
+.expand-field-click {
+    grid-template-rows: 1fr;
+}
 
 /*Dioalog sytles*/
 
